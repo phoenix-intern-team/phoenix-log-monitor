@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->    
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> -->
+    <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>    
+
+</head>
+
+<body> 
+    <div class="updatelog-button-container">
+    <button id="updatelog" class="btn btn-primary" >Update Logs</button>
+
+    <script type="text/javascript">
+        document.getElementById("updatelog").onclick = function () {
+            location.href = "http://localhost:1000/logtable";
+        };
+    </script>
+    </div>
+    </div>
+
+    <div class="input-daterange">
+        <input type="text" id="from" name="from" class="form-control-from-box">
+        <span class="input-group-addon-to-label">to</span>
+        <input type="text" id="to" name="to" class="form-control-to-box">
+    </div>
+
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover table-light data-table" id="log_table">
+                <thead class="thead-dark" style="text-align: center;font-family:sans-serif;">
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>loglevel</th>
+                        <th>message</th>
+                        <th>source</th>
+                        <th>eventID</th>
+                        <th>spanID</th>
+                        <!-- <th>stackTrace</th> -->
+                    </tr>
+                </thead>
+            <!-- <tbody id="log_table"></tbody> -->
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
