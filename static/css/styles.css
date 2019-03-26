@@ -10,17 +10,17 @@ body {
     background-image: linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
 }
 
-.form-control-from-box {
+.form-control.from-box {
     width:10%;
     margin-left: 2.5%;
 }
 
-.form-control-to-box {
+.form-control.to-box {
     width:10%; 
     margin-left: 2.5%
 }
 
-.input-group-addon-to-label {
+.input-group-addon.to-label {
     width:10%;
     margin-left: 2.5%;
     color:whitesmoke;
