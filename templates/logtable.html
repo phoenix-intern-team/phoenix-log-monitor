@@ -19,15 +19,20 @@
 </head>
 
 <body> 
-    <div class="updatelog-button-container">
-    <button id="updatelog" class="btn btn-primary" >Update Logs</button>
+    <div class="top-container">
+        <div class="updatelog-button-container">
+            <button id="updatelog" class="btn btn-primary" >Update Logs</button>
 
-    <script type="text/javascript">
-        document.getElementById("updatelog").onclick = function () {
-            location.href = "http://localhost:1000/logtable";
-        };
-    </script>
-    </div>
+            <script type="text/javascript">
+                document.getElementById("updatelog").onclick = function () {
+                    location.href = "http://127.0.0.1:5000/logtable";
+                };
+            </script>
+        </div>
+
+        <div class="live-log-button-container">
+            <button type="button" class="btn btn-success" id="live-log-button" onclick="getlivelogs()">Live Log</button>
+        </div>
     </div>
 
     <div style="display: inline-flex;margin-inline-start: 93px;">
