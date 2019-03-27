@@ -18,23 +18,23 @@ $(document).ready(function() {
         var obj = eval(data);
         //console.log(objdata);
             if ((obj["loglevel"]=="ERROR")) {
-                $(row).css({"background-color":"#F7B8A4"});
+                $(row).css({"background-color":"rgb(255,190,190)"});
             
         }
         if ((obj["loglevel"]=="WARN")) {
-                $(row).css({"background-color":"#E9F273"});
+                $(row).css({"background-color":"rgb(255,255,180)"});
             
         }
         if ((obj["loglevel"]=="CRITICAL")) {
-                $(row).css({"background-color":"#F74E1B"});
-            
+                $(row).css({"background-color":"rgb(255,0,0)"});
+                $(row).css({"color":"white"});
         }
         if ((obj["loglevel"]=="DEBUG")) {
-                $(row).css({"background-color":"#DFD8D6"});
+                $(row).css({"background-color":"rgb(145,145,145)"});
             
         }
         if ((obj["loglevel"]=="INFO")) {
-                $(row).css({"background-color":"#C1F07B"});
+                $(row).css({"background-color":"rgb(200,255,200)"});
             
         }
             return row;
