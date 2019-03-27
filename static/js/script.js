@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var table = $('#log_table').DataTable( {
         "ajax": {
-            "url": "http://localhost:1000/log",
+            "url": "http://127.0.0.1:5000/log",
             "dataSrc": ""
         },
         "columns": [
@@ -80,5 +80,8 @@ $(document).ready(function() {
             $('#from').keyup( function() { table.draw(); } );
             $('#to').keyup( function() { table.draw(); } );
         });
-
 });
+
+function getlivelogs() {
+    window.location = "http://127.0.0.1:9001";
+}

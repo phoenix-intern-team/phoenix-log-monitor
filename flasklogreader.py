@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import json
 from flask import Flask,request,jsonify,render_template,flash
 from flask_restful import Api,Resource,reqparse
@@ -38,4 +39,4 @@ def result():
 
 if __name__ == "__main__":
     app.secret_key = 'super secret key'
-    app.run(debug=True,port=1000)
+    app.run(host='0.0.0.0', debug=True,port=5000)
