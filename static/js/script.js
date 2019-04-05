@@ -1,5 +1,10 @@
 $(document).ready(function() {
     var table = $('#log_table').DataTable( {
+        "scrollY": 500,
+        "scrollX": true,
+        'responsive':true,
+        'deferRender':true,
+        'scroller':true,
         "ajax": {
             "url": "http://127.0.0.1:5000/log",
             "dataSrc": ""
@@ -79,10 +84,20 @@ $(document).ready(function() {
             $('#from').keyup( function() { table.draw(); } );
             $('#to').keyup( function() { table.draw(); } );
         });
+
+        $('#log_table tbody').on('click', function () {
+            var tr = $(this).closest('tr');
+            var row = table.row( tr );
+     
+            if ( row.child.isShown() ) {
+                row.child.hide();
+            }
+            else {
+                row.child.show();
+            }
+        } );
 });
 
 // function getlivelogs() {
 //     window.location = "http://127.0.0.1:9001";
 // }
-
-;
