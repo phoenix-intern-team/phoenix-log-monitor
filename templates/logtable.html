@@ -91,17 +91,24 @@
                     }
                     
                 </script>
-                <thead class="thead-dark display-4" style="text-align: center;font-size:20px;">
-                    <tr>
-                        <th>Timestamp</th>
-                        <th>Loglevel</th>
-                        <th>Message</th>
-                        <th>Source</th>
-                        <th>EventID</th>
-                        <th>SpanID</th>
-                        <!-- <th>stackTrace</th> -->
-                    </tr>
-                </thead>
+<div class="container">
+    <div style ="margin-top: 4%" class="table-responsive">
+        <table style="width: 100%;" class="table table-hover table-light data-table" id="log_table">
+            <thead class="thead-dark display-4" style="text-align: center;font-size:20px;">
+                <tr>
+                    <th>Timestamp</th>
+                    <th>Loglevel</th>
+                    <th>Message</th>
+                    <th class="none"><b>Source</b></th>
+                    <th class="none"><b>EventID</b></th>
+                    <th class="none"><b>TraceID</b></th>
+                    <th class="none"><b>spanID</b></th>
+                    <!-- <th>Audit</th> -->
+                    <!-- <th>Null</th> -->
+                    <!-- <th>SpanID</th> -->
+                    <th class="none"><b>stackTrace</b></th>
+                </tr>
+            </thead>
             <!-- <tbody id="log_table"></tbody> -->
             </table>
         </div>

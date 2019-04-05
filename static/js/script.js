@@ -12,13 +12,18 @@ $(document).ready(function() {
         "columns": [
             { "data": "timestamp" },
             { "data": "loglevel" },
-            { "data": "message" },
-            { "data": "source" },
-            { "data": "eventID" },
-            { "data": "spanID"}
-            // { "data": "stackTrace"} 
-
+            { "data": "message"},
+            { "data": "source"},
+            { "data": "eventID"},
+            { "data": "traceID" },
+            { "data": "spanID" },
+            { "data": "stackTrace"}
             ],
+            "columnDefs": [ {
+                "targets": '_all',
+                "data": null,
+                "defaultContent": "<i style=\"font-family: inherit;\">Null</i>"
+            } ],
         "rowCallback": function( row, data ) {
         var obj = eval(data);
         //console.log(objdata);
