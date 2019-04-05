@@ -3,7 +3,7 @@ services:
   web:
     build: .
     volumes:
-       - /home/phoenix-log-monitor/log_files:/app/log_files
+       - /home/phoenix-log-monitor/:/app/
     command: 
        - /app/post_script.sh
     ports:

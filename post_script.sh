@@ -1,5 +1,5 @@
 #!/bin/bash
 
 ls
-frontail -d log_files/phoenix-server-log.log
+frontail -d audit-log.txt
 python3 flasklogreader.py
