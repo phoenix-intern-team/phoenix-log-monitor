@@ -1,14 +1,22 @@
 version: '2'
 services:
-  web:
-    build: .
-    volumes:
-       - /home/phoenix-log-monitor/:/app/
-    command: 
-       - /app/post_script.sh
-    ports:
-      - "5000:5000"
-      - "9001:9001"
+   web:
+      build: .
+      volumes:
+        - /home/phoenix-log-monitor/:/app/
+      command: 
+        - /app/post_script.sh
+      ports:
+        - "5000:5000"
+        - "9001:9001"
+      depends_on: 
+        - redis
+   redis:
+      image: "redis:alpine"
+      # volumes:
+      #   - /etc/redis/redis.conf:/etc/redis/redis.conf
+      ports:
+        - "6379:6379"
   # node:
   #   image: node
   #   volumes:

@@ -9,7 +9,7 @@ from watchdog.events import FileSystemEventHandler
 from flask_sse import sse
 
 app = Flask(__name__)
-app.config["REDIS_URL"] = "redis://127.0.0.1"
+app.config["REDIS_URL"] = "redis://redis:6379"
 app.config["REDIS_PORT"] = 6379
 app.config['JSON_SORT_KEYS'] = False
 app.register_blueprint(sse, url_prefix='/stream')

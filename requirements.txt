@@ -2,4 +2,6 @@ flask
 watchdog
 flask-sse
 tailer
+gunicorn
+gevent
 flask_restful
