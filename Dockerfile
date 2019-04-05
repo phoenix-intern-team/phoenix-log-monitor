@@ -9,10 +9,8 @@ EXPOSE 9001
 RUN apt-get update -y
 RUN apt-get install -y python3
 RUN apt-get install -y python3-pip 
-RUN apt-get -y install curl gnupg
-RUN curl -sL https://deb.nodesource.com/setup_11.x  | bash -
-RUN apt-get -y install nodejs
-RUN npm i frontail -g
+RUN apt-get install -y gunicorn
+#RUN apt-get install -y gevent
 
 COPY requirements.txt /app/requirements.txt
 
