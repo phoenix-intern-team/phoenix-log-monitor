@@ -1,3 +1,5 @@
 flask
 watchdog
+flask-sse
+tailer
 flask_restful

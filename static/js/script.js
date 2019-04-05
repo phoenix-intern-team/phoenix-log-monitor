@@ -10,7 +10,7 @@ $(document).ready(function() {
             { "data": "message" },
             { "data": "source" },
             { "data": "eventID" },
-            { "data": "spanID" }
+            { "data": "spanID"}
             // { "data": "stackTrace"} 
 
             ],
@@ -35,7 +35,6 @@ $(document).ready(function() {
         }
         if ((obj["loglevel"]=="INFO")) {
                 $(row).css({"background-color":"rgb(200,255,200)"});
-            
         }
             return row;
     },
@@ -82,6 +81,8 @@ $(document).ready(function() {
         });
 });
 
-function getlivelogs() {
-    window.location = "http://127.0.0.1:9001";
-}
+// function getlivelogs() {
+//     window.location = "http://127.0.0.1:9001";
+// }
+
+;
