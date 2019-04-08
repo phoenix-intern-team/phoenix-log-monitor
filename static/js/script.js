@@ -22,7 +22,7 @@ $(document).ready(function() {
             "columnDefs": [ {
                 "targets": '_all',
                 "data": null,
-                "defaultContent": "<i style=\"font-family: inherit;\">Null</i>"
+                "defaultContent": "<i style=\"font-family: inherit;\">undefined</i>"
             } ],
         "rowCallback": function( row, data ) {
         var obj = eval(data);

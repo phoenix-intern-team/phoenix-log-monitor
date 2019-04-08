@@ -9,6 +9,8 @@ from watchdog.events import FileSystemEventHandler
 from flask_sse import sse
 
 app = Flask(__name__)
+# redis://127.0.0.1 - for ubuntu
+# redis://redis:6379 - for docker
 app.config["REDIS_URL"] = "redis://redis:6379"
 app.config["REDIS_PORT"] = 6379
 app.config['JSON_SORT_KEYS'] = False
@@ -27,7 +29,7 @@ def publish_hello():
 @app.route('/log')
 def log():
     # CHANGE LOG FILE PATH HERE
-    with open ('log_files/phoenix-server-log.log','r') as f:
+    with open ('log_files/phoenix-log-monitor_logfiles/phoenix-server_log-2019-03-22.log','r') as f:
         json_data=[json.loads(line) for line in f]
     return jsonify(json_data)
 
@@ -43,7 +45,7 @@ def result():
 
 @app.route('/stream_tail')
 def stream_tail():
-    f = open('log_files/phoenix-server-log.log')
+    f = open('log_files/phoenix-log-monitor_logfiles/phoenix-server_log-2019-03-22.log')
     # prev_lines = tailer.tail(f, 5)
     # sse.publish(json.loads(str(prev_lines)), type='logstream')
     for line in tailer.follow(f):
