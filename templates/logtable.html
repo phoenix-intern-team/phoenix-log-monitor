@@ -32,7 +32,10 @@
         </div>
 
         <div class="live-log-button-container">
-            <button type="button" class="btn btn-success" id="live-log-button" onclick="getlivelogs()">Live Log</button>
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="toggle-live-log-checkbox" checked>
+                <label class="custom-control-label" for="toggle-live-log-checkbox">Live log</label>
+            </div>
         </div>
     </div>
 
@@ -59,57 +62,76 @@
 
     <div class="container">
         <div class="table-responsive">
-            <table class="table table-hover table-light data-table" id="log_table">
+            <table style="width:100%" class="table table-hover table-light data-table" id="log_table">
+                    <thead class="thead-dark display-4" style="text-align: center;font-size:20px;">
+                            <tr>
+                                <th>Timestamp</th>
+                                <th>Loglevel</th>
+                                <th>Message</th>
+                                <th class="none"><b>Source</b></th>
+                                <th class="none"><b>EventID</b></th>
+                                <th class="none"><b>TraceID</b></th>
+                                <th class="none"><b>spanID</b></th>
+                                <!-- <th>Audit</th> -->
+                                <!-- <th>Null</th> -->
+                                <!-- <th>SpanID</th> -->
+                                <th class="none"><b>stackTrace</b></th>
+                            </tr>
+                        </thead>
                 <script>
-
+                    var logArr = new Array();
                     var source = new EventSource("{{ url_for('sse.stream') }}");
                     source.addEventListener('greeting', function(event) {
                         var data = JSON.parse(event.data);
                         alert("The server says " + data.message);
                     }, false);
+
                     source.addEventListener('error', function(event) {
                         alert("Failed to connect to event stream. Is Redis running?");
                     }, false);
-
+                    
+                    $('#toggle-live-log-checkbox').change(function(){
+                        if($(this).is(':checked')) {
+                            populateTableFromArray();
+                        }
+                    });
                     source.addEventListener('logstream', function(event) {
                         var data = JSON.parse(event.data);
-                        console.log(event.data)
-                        
-                        populateDataTable(data)
-                        
+                        // console.log(event.data)
+                        checkbox = $("#toggle-live-log-checkbox").prop("checked");
+                        if (checkbox == false) {
+                            storeLogData(data);
+                        } else {
+                            populateDataTable(data)
+                        }  
                     }, false);
 
                     function populateDataTable(data) {
                         console.log("populating data table...");
-                        var s = JSON.stringify(data);
-                        s = "{ \"data\" : [" + s + "] }";
-                        var json_obj = JSON.parse(s);
-                        console.log(json_obj);
                         var table = $('#log_table').DataTable();
-                        var newrow = "<tr><td>" + data.timestamp + "</td><td>" + data.loglevel + "</td><td>" + data.message + "</td><td>" + data.source + "</td><td>" + data.eventID + "</td><td>" + data.spanID + "</td></tr>";
+                        var newrow = "<tr><td>" + data.timestamp + "</td><td>" + data.loglevel + "</td><td>" + data.message + "</td><td>" + data.source + "</td><td>" + data.eventID + "</td><td>" +  data.traceID + "</td><td>" + data.spanID + "</td><td>" + data.stackTrace + "</td></tr>";
                         table.row.add($(newrow)).draw();
+                    }
+
+                    function storeLogData(data) {
+                        logArr.push(data);
+                    }
+
+                    function populateTableFromArray() {
+                        console.log("populating table from array...");
+                        console.log(logArr);
+                        // if (logArr.length== 0);
+                        //     console.log("array length is 0?");
+                        //     return;
+                        var table = $('#log_table').DataTable();
+                        logArr.forEach(element => {
+                            var newrow = "<tr><td>" + element.timestamp + "</td><td>" + element.loglevel + "</td><td>" + element.message + "</td><td>" + element.source + "</td><td>" + element.eventID + "</td><td>" +  element.traceID + "</td><td>" + element.spanID + "</td><td>" + element.stackTrace + "</td></tr>";
+                            table.row.add($(newrow)).draw();
+                        });
+                        logArr = [];
                     }
                     
                 </script>
-<div class="container">
-    <div style ="margin-top: 4%" class="table-responsive">
-        <table style="width: 100%;" class="table table-hover table-light data-table" id="log_table">
-            <thead class="thead-dark display-4" style="text-align: center;font-size:20px;">
-                <tr>
-                    <th>Timestamp</th>
-                    <th>Loglevel</th>
-                    <th>Message</th>
-                    <th class="none"><b>Source</b></th>
-                    <th class="none"><b>EventID</b></th>
-                    <th class="none"><b>TraceID</b></th>
-                    <th class="none"><b>spanID</b></th>
-                    <!-- <th>Audit</th> -->
-                    <!-- <th>Null</th> -->
-                    <!-- <th>SpanID</th> -->
-                    <th class="none"><b>stackTrace</b></th>
-                </tr>
-            </thead>
-            <!-- <tbody id="log_table"></tbody> -->
             </table>
         </div>
     </div>
