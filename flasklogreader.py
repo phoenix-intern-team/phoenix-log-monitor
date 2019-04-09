@@ -13,13 +13,13 @@ from flask_sse import sse
 app = Flask(__name__)
 # redis://127.0.0.1 - for ubuntu
 # redis://redis:6379 - for docker
-app.config["REDIS_URL"] = "redis://127.0.0.1"
+app.config["REDIS_URL"] = "redis://redis:6379"
 app.config["REDIS_PORT"] = 6379
 app.config['JSON_SORT_KEYS'] = False
 app.register_blueprint(sse, url_prefix='/stream')
 json_data=[]
 
-BASE_DIR = '/home/phoenix-log-monitor/log_files/phoenix-log-monitor_logfiles/'
+BASE_DIR = '/app/log_files/'
 
 # with open ('phoenix-server-log.log','r') as f:
 #     # json_data=[json.loads(line) for line in f]
@@ -62,8 +62,8 @@ def getlogs():
 
 @app.route('/logtable',methods = ['GET'])
 def result():
-    # flash("flash test!!!!")
-    return render_template("logtable.html")
+    log_file=str(request.cookies.get("file"))
+    return render_template("logtable.html",log_file=log_file)
 
 @app.route('/stream_tail')
 def stream_tail():
