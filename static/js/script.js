@@ -6,7 +6,7 @@ $(document).ready(function() {
         'deferRender':true,
         'scroller':true,
         "ajax": {
-            "url": "http://127.0.0.1:5000/log",
+            "url": "http://127.0.0.1:5000/log", // for running on 134 http://161.92.248.134:5000/log
             "dataSrc": ""
         },
         "columns": [

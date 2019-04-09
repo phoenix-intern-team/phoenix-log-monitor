@@ -21,17 +21,6 @@ json_data=[]
 
 BASE_DIR = '/app/log_files/'
 
-# with open ('phoenix-server-log.log','r') as f:
-#     # json_data=[json.loads(line) for line in f]
-#     json_data=[json.loads(line) for line in f]
-
-
-
-@app.route('/hello')
-def publish_hello():
-    sse.publish({"message": "Hello!"}, type='greeting')
-    return "Message sent!"
-
 @app.route('/', methods=['GET','POST'])
 def dropdown():
     files = os.listdir(BASE_DIR)
@@ -54,10 +43,6 @@ def log():
     with open (log_file,'r') as f:
         json_data=[json.loads(line) for line in f]
     return jsonify(json_data)
-
-@app.route('/getlogs')
-def getlogs():
-    return render_template('getlogs.html')
 
 
 @app.route('/logtable',methods = ['GET'])
