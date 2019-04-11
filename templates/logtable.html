@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->    
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/> -->
     <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -20,17 +18,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 </head>
 
-<body> 
-    <div class="top-container">
-        <div class="updatelog-button-container">
-            <button id="updatelog" class="btn btn-primary" >Update Logs</button>
-
-            <script type="text/javascript">
-                document.getElementById("updatelog").onclick = function () {
-                    location.href = "http://127.0.0.1:5000/logtable";
-                };
-            </script>
-        </div>
+<h1 style="text-align: center; margin: 10px; font-size: x-large;">{{ log_file }}</h1>
 
         <div class="live-log-button-container">
             <div class="custom-control custom-checkbox">
