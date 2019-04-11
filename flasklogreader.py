@@ -9,6 +9,8 @@ import tailer
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 from flask_sse import sse
+from flask_socketio import SocketIO
+from flask_socketio import send, emit
 
 app = Flask(__name__)
 # redis://127.0.0.1 - for ubuntu
@@ -16,7 +18,9 @@ app = Flask(__name__)
 app.config["REDIS_URL"] = "redis://127.0.0.1"
 app.config["REDIS_PORT"] = 6379
 app.config['JSON_SORT_KEYS'] = False
-app.register_blueprint(sse, url_prefix='/stream')
+# app.register_blueprint(sse, url_prefix='/stream')
+socketio = SocketIO(app)
+
 json_data=[]
 
 BASE_DIR = '/home/phoenix-log-monitor/log_files/phoenix-log-monitor_logfiles/'
@@ -24,13 +28,6 @@ BASE_DIR = '/home/phoenix-log-monitor/log_files/phoenix-log-monitor_logfiles/'
 # with open ('phoenix-server-log.log','r') as f:
 #     # json_data=[json.loads(line) for line in f]
 #     json_data=[json.loads(line) for line in f]
-
-
-
-@app.route('/hello')
-def publish_hello():
-    sse.publish({"message": "Hello!"}, type='greeting')
-    return "Message sent!"
 
 @app.route('/', methods=['GET','POST'])
 def dropdown():
@@ -48,12 +45,12 @@ def setcookie():
 @app.route('/log')
 def log():
     # CHANGE LOG FILE PATH HERE
-    select = request.cookies.get('file')
-    sel=str(select)
-    log_file=os.path.join(BASE_DIR,sel)
-    with open (log_file,'r') as f:
-        json_data=[json.loads(line) for line in f]
-    return jsonify(json_data)
+	select = request.cookies.get('file')
+	sel=str(select)
+	log_file=os.path.join(BASE_DIR,sel)
+	with open (log_file,'r') as f:
+		json_data=[json.loads(line) for line in f]
+	return jsonify(json_data)
 
 @app.route('/getlogs')
 def getlogs():
@@ -65,17 +62,17 @@ def result():
     # flash("flash test!!!!")
     return render_template("logtable.html")
 
-@app.route('/stream_tail')
+@socketio.on('stream')
 def stream_tail():
-    base_file = request.cookies.get('file')
-    print(os.path.join(BASE_DIR,str(base_file)))
-    log_file=os.path.join(BASE_DIR,str(base_file))
-    f = open(log_file, 'r')
+	import tailer
+	base_file = request.cookies.get('file')
+	print(os.path.join(BASE_DIR,str(base_file)))
+	log_file=os.path.join(BASE_DIR,str(base_file))
+	f = open(log_file, 'r')
     # prev_lines = tailer.tail(f, 5)
     # sse.publish(json.loads(str(prev_lines)), type='logstream')
-    for line in tailer.follow(f):
-        # print('output')
-        sse.publish(json.loads(line), type='logstream')
+	for line in tailer.follow(f):
+		emit('logstream', json.loads(line))
 
 # if __name__ == "__main__":
 #     app.secret_key = 'super secret key'
