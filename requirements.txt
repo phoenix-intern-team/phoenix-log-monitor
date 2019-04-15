@@ -5,3 +5,4 @@ tailer
 gunicorn
 gevent
 flask_restful
+flask_socketio
