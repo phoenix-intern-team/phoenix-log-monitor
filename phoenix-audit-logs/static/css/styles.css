@@ -1,0 +1,65 @@
+/* body {
+    background-color: #c6dce6;
+    background-image: linear-gradient(141deg, #9fb8ad 0%, #dbf0f1 51%, #cedde2 75%);
+} */
+
+#log_table {
+    margin-top: 30px;
+    width: 100%;
+    /* background-color: #c6dce6;
+    background-image: linear-gradient(141deg, #9fb8ad 0%, #dbf0f1 51%, #cedde2 75%); */
+}
+
+.form-control.from-box {
+    width:10%;
+    margin-left: 2.5%;
+}
+
+.form-control.to-box {
+    width:10%; 
+    margin-left: 2.5%
+}
+
+.input-group-addon.to-label {
+    width:10%;
+    margin-left: 2.5%;
+    color:whitesmoke;
+}
+
+.updatelog-button-container {
+    text-align: center; 
+    margin-top:40px;
+    margin-bottom: 20px;
+}
+.gj-datepicker-md.gj-unselectable{
+    width:90px;
+}
+.details-row td {
+    padding: 0;
+    margin: 0;
+  }
+.iconSettings, td.details-control:before, tr.shown td.details-control:before {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+  }
+  
+  td.details-control {
+    cursor: pointer;
+    text-align: center;
+  }
+  td.details-control:before {
+    content: '\2b';
+  }
+  
+  tr.shown td.details-control:before {
+    content: '\2212';
+  } 

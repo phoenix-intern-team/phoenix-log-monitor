@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src = "https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <!--     
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+     -->
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="shortcut icon" href="">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>    
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+</head>
+<body> 
+    <div class="container">
+        <div style ="margin-top: 4%" class="table-responsive">
+            <table style="width: 100%;" class="table table-hover table-light data-table" id="log_table">
+                <thead class="thead-dark display-4" style="text-align: center;font-size:20px;">
+                    <tr>
+                        <th ></th>
+                        <th class="none"><b> search</b></th>
+                        <th class="none"><b> fullUrl</b></th>
+                        <th>Recorded</th>
+                        <th class="none"><b>Resource id</b></th>
+                        <th style="width:25px;">Security code</th>
+                        <th class="none"><b>versionId</b></th>
+                        <th class="none"><b>lastUpdated</b></th>
+                        <th>Type : Code</th>
+                        <th class="none"><b>type : system</b></th>
+                        <th>agent : userId</th>
+                        <th class="none"><b>requestor</b></th>
+                        <th class="none"><b>Action</b></th>
+                        <th class="none"><b>Entity Type : Code</b></th>
+                        <th class="none"><b>Entitiy Type: system</b></th>
+                        <th class="none"><b>Entity Type : display</b></th>
+                        <th class="none"><b>Entity Identifier : value</b></th>
+                        <th class="none"><b>Source : Identifier</b></th>
+                        <th class="none"><b>Outcome</b></th>
+                        
+                        <th class="none"><b>Resource Type</b></th>
+                    </tr>
+                </thead>
+            <!-- <tbody id="log_table"></tbody>-->
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
