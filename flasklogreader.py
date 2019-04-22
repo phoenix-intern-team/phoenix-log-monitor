@@ -12,6 +12,10 @@ from flask_sse import sse
 from flask_socketio import SocketIO
 from flask_socketio import send, emit
 
+"""
+	server ip: 161.92.248.154, 161.92.248.134, 161.85.111.217
+	phoenix log location: /var/lib/docker/165536.165536/phoenix/iam-logs	
+"""
 app = Flask(__name__)
 # redis://127.0.0.1 - for ubuntu
 # redis://redis:6379 - for docker
@@ -19,10 +23,11 @@ app.config["REDIS_URL"] = "redis://redis:6379"
 app.config["REDIS_PORT"] = 6379
 app.config['JSON_SORT_KEYS'] = False
 # app.register_blueprint(sse, url_prefix='/stream')
-socketio = SocketIO(app)
+socketio = SocketIO(app, engineio_logger=True)
 
 json_data=[]
 
+# change base dir here
 BASE_DIR = '/app/log_files/'
 
 @app.route('/', methods=['GET','POST'])

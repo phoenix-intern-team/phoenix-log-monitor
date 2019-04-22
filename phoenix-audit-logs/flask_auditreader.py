@@ -16,7 +16,7 @@ def hello():
 
 @app.route('/log', methods=['GET'])
 def log():
-    log_file='C:\\Log Monitoring\\audit-log\\audit_log.json'
+    log_file='audit_log.json'
     json_data=[]
     with open(log_file) as f:
         json_data = json.load(f)

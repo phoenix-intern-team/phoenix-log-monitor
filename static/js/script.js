@@ -6,6 +6,9 @@ $(document).ready(function() {
         'deferRender':true,
         'scroller':true,
         "ajax": {
+            // change server IP here
+            // server: 161.85.111.217,161.85.111.217, 161.92.248.134
+            // localhost: 127.0.0.1
             "url": "http://127.0.0.1:5000/log", // for running on 134 http://161.92.248.134:5000/log
             "dataSrc": ""
         },

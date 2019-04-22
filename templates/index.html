@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Flask-SSE Quickstart</title>
+</head>
+<body>
+  <h1>Flask-SSE Quickstart</h1>
+  <script>
+    
+    var source = new EventSource("{{ url_for('sse.stream') }}");
+    source.addEventListener('greeting', function(event) {
+        var data = JSON.parse(event.data);
+        alert("The server says " + data.message);
+    }, false);
+    source.addEventListener('error', function(event) {
+        alert("Failed to connect to event stream. Is Redis running?");
+    }, false);
+
+    source.addEventListener('log_stream', function(event) {
+      console.log("inside log stream");
+      var data = JSON.parse(event.data);
+      console.log(data);
+      data.forEach(function(element) {
+        document.getElementById("info-container").innerHTML += element.timestamp + "<p>";
+      });
+    }, false);
+
+    source.addEventListener('logstream', function(event) {
+      var data = JSON.parse(event.data);
+      console.log(data);
+      // data.forEach(function(element) {
+      //   document.getElementById("info-container").innerHTML += element.timestamp + "<p>";
+      // });
+      document.getElementById("info-container").innerHTML += data.timestamp + "<p>";
+    }, false);
+
+
+  </script>
+
+  <div id="info-container">
+    <!-- log info goes here -->
+  </div>
+</body>
+</html>

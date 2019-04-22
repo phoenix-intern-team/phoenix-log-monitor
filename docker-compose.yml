@@ -4,19 +4,21 @@ services:
       build: .
       volumes:
         - /home/phoenix-log-monitor/:/app/
+        # change server log location here here
+        - /var/lib/docker/phoenix/iam-logs/:/app/log_files/iam-logs/
       command: 
         - /app/post_script.sh
       ports:
         - "5000:5000"
         - "9001:9001"
-      depends_on: 
-        - redis
-   redis:
-      image: "redis:alpine"
-      # volumes:
-      #   - /etc/redis/redis.conf:/etc/redis/redis.conf
-      ports:
-        - "6379:6379"
+      # depends_on: 
+      #   - redis
+  #  redis:
+  #     image: "redis:alpine"
+  #     # volumes:
+  #     #   - /etc/redis/redis.conf:/etc/redis/redis.conf
+  #     ports:
+  #       - "6379:6379"
   # node:
   #   image: node
   #   volumes:

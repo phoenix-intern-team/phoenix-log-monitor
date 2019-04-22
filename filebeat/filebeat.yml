@@ -1,0 +1,22 @@
+filebeat.prospectors:
+- type: log
+  paths:
+  - '/app/log_files/*/*.log'
+  # json.keys_under_root: true
+#output.elasticsearch:
+#  hosts: ["elk_elasticsearch_1:9200"]
+# setup.kibana:
+#   host: "elk_kibana_1:5601"
+output.redis:
+  hosts: ["hungry_colden:6379"]
+#   key: "filebeat"
+#   db: 0
+#   timeout: configure
+# output.file:
+#   path: "/tmp/filebeat"
+#   filename: filebeat
+
+filebeat.inputs:
+- type: log
+  paths:
+    - /app/log_files/phoenix-server-log.log
